@@ -1,47 +1,39 @@
 <p align="center">
   <strong>Oktsec</strong><br>
-  Security layer for AI agent-to-agent communication
+  Runtime security for AI agents
 </p>
 <p align="center">
-  Every message is signed, inspected, and logged. If it doesn't comply, it doesn't pass.<br>
-  No LLM. No cloud. Single binary. Your infra, your data.
+  Security proxy and MCP gateway in a single Go binary.<br>
+  188 detection rules. Ed25519 identity. Hash-chained audit trail.<br>
+  No LLM required. Your infra, your data.
 </p>
 
 ---
 
-### What we build
+### Projects
 
-AI agents are starting to talk to each other — calling tools, delegating tasks, sharing data. But there's no standard way to verify who's sending what, enforce who can talk to whom, or audit what happened.
+**[oktsec](https://github.com/oktsec/oktsec)** - Security proxy and MCP gateway for AI agents. 10-stage pipeline: rate limiting, identity verification, ACL, content scanning, intent validation, tool policies, verdict escalation, audit logging, anomaly detection. 11-page dashboard. Hooks for Claude Code, Cursor, and any MCP client. One command setup.
 
-**Oktsec** is an open-source security proxy that sits between AI agents and enforces a multi-layer pipeline:
+**[security-review](https://github.com/oktsec/security-review)** - Security review skill for AI-built projects. 130+ checks mapped to OWASP Top 10. Auto-detects your stack, finds issues, gives you the fix. Works in Claude Code, Cursor, Codex, Windsurf, and 38+ tools that support skills.
 
-- **Identity** — Ed25519 cryptographic signatures verify every message sender
-- **Policy** — YAML-based ACLs control which agent can message which, with default-deny mode
-- **Content scanning** — 159 detection rules catch prompt injection, credential leaks, PII exposure, data exfiltration, MCP attacks, and supply chain risks
-- **Quarantine** — High-severity messages are held for human review before delivery
-- **Audit** — Every message logged to SQLite with content hash, verification status, triggered rules, and policy decision
-- **Anomaly detection** — Background risk scoring with automatic alerts and optional auto-suspension
+### Ecosystem
 
-Content scanning is powered by the [Aguara](https://github.com/garagon/aguara) engine, which monitors 28K+ skills across 5 MCP registries daily via [Aguara Watch](https://watch.aguarascan.com).
-
-Supports **MCP clients** (Claude Desktop, Cursor, VS Code, Cline, Windsurf), **OpenClaw**, and **NanoClaw**. Includes a deployment security auditor with 41 checks across all three platforms.
-
-Covers **7 of 10** categories in the [OWASP Top 10 for Agentic Applications](https://owasp.org/www-project-agentic-ai-threats/).
-
-Runs as a **proxy**, a [**Go SDK**](https://pkg.go.dev/github.com/oktsec/oktsec/sdk), or an **MCP server** (6 tools).
+Content scanning is powered by the [Aguara](https://github.com/garagon/aguara) engine, which monitors 57K+ agent tools across 7 registries via [Aguara Watch](https://watch.aguarascan.com).
 
 ### Get started
 
 ```bash
-oktsec discover                  # Find MCP servers, OpenClaw, NanoClaw
-oktsec init                      # Generate config, keypairs, and policy
-oktsec wrap cursor               # Route MCP client through oktsec
-oktsec serve                     # Start proxy + dashboard
+# oktsec: security proxy for AI agents
+brew install oktsec/tap/oktsec
+oktsec run
+
+# security-review: audit your AI-built project
+npx skills add oktsec/security-review
 ```
 
 ### Links
 
-- [Documentation & source](https://github.com/oktsec/oktsec)
-- [Aguara — security scanner for AI agents](https://github.com/garagon/aguara)
-- [Aguara Watch — live registry monitoring](https://watch.aguarascan.com)
-- [Website](https://oktsec.com)
+- [oktsec.com](https://oktsec.com)
+- [aguarascan.com](https://aguarascan.com)
+- [watch.aguarascan.com](https://watch.aguarascan.com)
+- [Documentation](https://oktsec.github.io/oktsec/)

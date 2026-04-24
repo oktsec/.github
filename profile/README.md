@@ -4,7 +4,7 @@
 </p>
 <p align="center">
   Security proxy and MCP gateway in a single Go binary.<br>
-  188 detection rules. Ed25519 identity. Hash-chained audit trail.<br>
+  268 detection rules. Ed25519 identity. Hash-chained audit trail.<br>
   No LLM required. Your infra, your data.
 </p>
 
@@ -14,7 +14,7 @@
 
 **[oktsec](https://github.com/oktsec/oktsec)** - Security proxy and MCP gateway for AI agents. 10-stage pipeline: rate limiting, identity verification, ACL, content scanning, intent validation, tool policies, verdict escalation, audit logging, anomaly detection. 11-page dashboard. Hooks for Claude Code, Cursor, and any MCP client. One command setup.
 
-**[security-review](https://github.com/oktsec/security-review)** - Security review skill for AI-built projects. 130+ checks mapped to OWASP Top 10. Auto-detects your stack, finds issues, gives you the fix. Works in Claude Code, Cursor, Codex, Windsurf, and 38+ tools that support skills.
+**[security-review](https://github.com/oktsec/security-review)** - Security review skill for AI-built projects. 130+ checks mapped to OWASP Top 10. Auto-detects your stack, finds issues, gives you the fix. Works in Claude Code, Cursor, Codex, Windsurf, and 40+ tools that support skills.
 
 ### Ecosystem
 
